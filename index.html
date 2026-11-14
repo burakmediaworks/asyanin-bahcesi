@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#21152f">
+  <meta name="description" content="Gün batımında kasımpatıların arasında dolaş. Küçük bir sürpriz seni bekliyor.">
+  <title>Kasımpatı Bahçesi</title>
+  <link rel="stylesheet" href="game.css">
+</head>
+<body>
+  <main id="garden" aria-label="Kasımpatı bahçesi oyunu">
+    <canvas id="world" tabindex="0" aria-label="Bahçede yürümek için basılı tutup sürükle veya yön tuşlarını kullan. Çiçeklerin arasındaki sandığı bul." aria-describedby="movement-help"></canvas>
+    <header class="hud" id="hud" hidden>
+      <div class="hud-actions">
+        <button id="new-garden" type="button" aria-label="Yeni bir bahçe başlat" title="Yeni bahçe">↻</button>
+      </div>
+    </header>
+    <section id="welcome" class="welcome" aria-labelledby="welcome-title">
+      <div class="welcome-copy">
+        <p class="welcome-kicker">Gün batmadan…</p>
+        <h1 id="welcome-title">Sana küçük<br>bir bahçe.</h1>
+        <p>Çiçeklerin arasında<br>bir sürpriz saklı.</p>
+        <button id="start" type="button" disabled>Bahçe hazırlanıyor…</button>
+      </div>
+    </section>
+    <div class="walking-hint" id="movement-help" hidden><span class="touch-hint">Basılı tut ve gitmek istediğin yöne sürükle.</span><span class="keyboard-hint">Sürükle, yön tuşlarını veya WASD’yi kullan.</span></div>
+    <div id="joystick" class="joystick" aria-hidden="true" hidden><span id="joystick-knob"></span></div>
+    <p id="status" class="sr-only" role="status" aria-live="polite"></p>
+  </main>
+  <dialog id="gift-dialog" aria-label="Kasımpatı hediyen">
+    <div class="gift-toolbar"><button id="back-garden" type="button">← Bahçeye dön</button></div>
+    <h2 id="gift-title">Küçük bir sürpriz.</h2>
+    <div id="gift-stage">
+      <canvas id="gift-canvas" width="720" height="900" aria-label="Sandık ve kasımpatı demeti"></canvas>
+      <button id="open-chest" class="art-button" type="button" aria-label="Sandığı aç"></button>
+      <button id="note-trigger" class="art-button envelope" type="button" hidden disabled aria-label="Sana bi sürprizim var. — Mektubu aç" aria-controls="video-card" aria-expanded="false"><span class="envelope-flap" aria-hidden="true"></span><span class="envelope-label">Sana bi <br>sürprizim var.</span></button>
+      <div id="letter-shell" class="envelope" hidden aria-hidden="true"><span class="envelope-label">Sana bi <br>sürprizim var.</span></div>
+      <section id="video-card" hidden aria-label="Kartın içindeki video"><div id="video-slot"></div></section>
+    </div>
+    <p id="gift-hint">Sandığı açmak için dokun.</p>
+  </dialog>
+  <script src="manifest.js"></script>
+  <script src="garden-model.js"></script>
+  <script src="garden-renderer.js"></script>
+  <script src="renderers.cjs"></script>
+  <script src="game.js"></script>
+</body>
+</html>
